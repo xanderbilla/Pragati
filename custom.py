@@ -109,7 +109,7 @@ def RExtract(pydantic_class, llm, prompt):
     def preparse(string):
         if '{' not in string: string = '{' + string
         if '}' not in string: string = string + '}'
-        string = (string.replace("\\_", "_").replace("\n", " ").replace("\]", "]").replace("\[", "["))
+        string = (string.replace("\\_", "_").replace("\n", " ").replace("\\]", "]").replace("\\[", "["))
         return string
     return instruct_merge | prompt | llm | preparse | parser
 
